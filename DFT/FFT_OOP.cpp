@@ -6,7 +6,7 @@
 FFT_OOP::FFT_OOP() {};
 
 /*DESTRUTOR*/
-FFT_OOP::~FFT_OOP() {};
+//FFT_OOP::~FFT_OOP() {};
 
 /*MÉTODOS*/
 std::vector<std::complex<float>> FFT_OOP::FFT(std::vector<float> xn_reverso)
@@ -27,7 +27,7 @@ std::vector<std::complex<float>> FFT_OOP::FFT(std::vector<float> xn_reverso)
 };
 std::vector<std::complex<float>> FFT_OOP::FFT(std::vector<std::complex<float>>& xn_reversa_complex)
 {
-	unsigned int tam_amostra_complexa{ xn_reversa_complex.size() };
+	auto tam_amostra_complexa{ xn_reversa_complex.size() };
 	std::vector<std::complex<float>> Xk(tam_amostra_complexa);
 	std::vector<std::complex<float>> ANi(tam_amostra_complexa / 2);
 	std::vector<std::complex<float>> ANf(tam_amostra_complexa / 2);

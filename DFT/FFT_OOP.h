@@ -11,7 +11,7 @@ public:
 	FFT_OOP();
 
 	/*DESTRUTOR*/
-	~FFT_OOP();
+	//~FFT_OOP();
 
 	/*MÉTODOS*/
 	std::vector<std::complex<float>> FFT(std::vector<float> xn_reversa);
