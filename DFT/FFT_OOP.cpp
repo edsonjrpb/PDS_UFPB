@@ -6,9 +6,9 @@
 FFT_OOP::FFT_OOP() {};
 
 /*DESTRUTOR*/
-//FFT_OOP::~FFT_OOP() {};
+FFT_OOP::~FFT_OOP() {};
 
-/*MÉTODOS*/
+/*MÃ‰TODOS*/
 std::vector<std::complex<float>> FFT_OOP::FFT(std::vector<float> xn_reverso)
 {
 	std::vector<std::complex<float>> xn_reverso_complexo;
@@ -37,7 +37,7 @@ std::vector<std::complex<float>> FFT_OOP::FFT(std::vector<std::complex<float>>& 
 	/*Carregando os Twiddle Factors*/
 	std::vector<std::complex<float>> Wn(tam_amostra_complexa);
 	for (int i = 0; i < tam_amostra_complexa; i++) {
-		float alpha = (float)(2.0f * M_PI * i / tam_amostra_complexa); //verificar se valor é realmente negativo ou não
+		float alpha = (float)(2.0f * M_PI * i / tam_amostra_complexa); //verificar se valor Ã© realmente negativo ou nÃ£o
 		Wn[i] = std::complex<float>(std::cos(alpha), std::sin(alpha));
 	}
 	
