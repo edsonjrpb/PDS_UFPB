@@ -14,7 +14,7 @@ public:
 	~FFT_OOP();
 
 	/*MÉTODOS*/
-	std::vector<std::complex<float>> FFT(std::vector<float> xn_reversa);
-	std::vector<std::complex<float>> FFT(std::vector<std::complex<float>> &xn_reversa);
+	std::vector<std::complex<double>> FFT(std::vector<double> xn_reversa);
+	std::vector<std::complex<double>> FFT(std::vector<std::complex<double>> &xn_reversa);
 
 };

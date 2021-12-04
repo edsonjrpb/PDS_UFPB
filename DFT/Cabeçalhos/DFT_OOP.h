@@ -13,7 +13,7 @@ public:
 	~DFT_OOP();
 	
 	/*MÉTODOS*/
-	std::vector<std::complex<float>> DFT(std::vector<float> xn);
+	std::vector<std::complex<double>> DFT(std::vector<double> xn);
 
 };
 

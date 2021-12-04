@@ -9,7 +9,7 @@
 #include "FFT_OOP.h"
 #include "Amostras.h"
 #include "Amostras_Reversa.h"
-
+#include <AudioFile.h>
 
 
 
@@ -19,6 +19,9 @@ using namespace std::chrono;
 int main()
 {
 	setlocale(LC_ALL, "portuguese");
+	
+	/*Variables declaration*/
+	AudioFile<double> audioFile;
 	int escolha_amostras{ 0 };
 	int escolha_transformada{ 0 };
 	Amostras xn;
@@ -29,12 +32,19 @@ int main()
 	std::chrono::high_resolution_clock::time_point stop;
 	int escolha_continuar{ 0 };
 
+	/*Open .WAV File*/
+	audioFile.load("F:/Mestrado/PDS/Audacity_Teste/WAV Samples/Closed-Hi-Hat-1.wav");
+
+	/*Show .WAV File Summary*/
+	audioFile.printSummary();
+	std::vector<std::vector<double>> vetorAudio = audioFile.samples;
+
 	do {
 		system("CLS");
 		cout << "\t\t******************** Transformada Discreta de Fourier ********************";
 		cout << "\n\n\nQual algoritmo deseja utilizar?\n\n1 - DFT\n2 - FFT\n\nEscolha: ";
 		cin >> escolha_transformada;
-		cout << "\n\n\nQual a forma de entrada das amostras (xn)?\n\n1 - Amostras Randômicas\n2 - Amostras Digitadas\n3 - Amostras a Partir de Arquivo Externo\n\nEscolha: ";
+		cout << "\n\n\nQual a forma de entrada das amostras (xn)?\n\n1 - Amostras Randômicas\n2 - Amostras Digitadas\n3 - Amostras a Partir de Arquivo Externo\n\n4 - Amostras de Arquivo de Áufio .WAV\nEscolha: ";
 		cin >> escolha_amostras;
 		system("CLS");
 		cout << "\n\n\t\t************************ Obtenção de Amostras **************************\n";
@@ -60,7 +70,14 @@ int main()
 			xn.MostrarAmostras(xn.getAmostras());
 			break;
 
+		case(4):
+
+			xn.setAmostras(audioFile.samples[0]);
+			xn.MostrarAmostras(xn.getAmostras());
+			break;
+
 		default:
+
 			std::cout << "Entrada Inválida";
 			break;
 		}
@@ -69,21 +86,23 @@ int main()
 		{
 
 		case(1):
-
-			Xk_DFT.DFT(xn.getAmostras());
+			
 			start = std::chrono::high_resolution_clock::now();
-			Xk_DFT.mostrarTransformadaFourier(Xk_DFT.getTransformada());
+			Xk_DFT.DFT(xn.getAmostras());
 			stop = std::chrono::high_resolution_clock::now();
+			Xk_DFT.mostrarTransformadaFourier(Xk_DFT.getTransformada());
+			
 			break;
 
 		case(2):
 
-			start = std::chrono::high_resolution_clock::now();
+			std::cout << "aquiFFT";
 			xn.ZeroPadding();
+			start = std::chrono::high_resolution_clock::now();
 			xn_reversa.setAmostras_Reversas(xn_reversa.Reverter_Amostras(xn));
 			Xk_FFT.FFT(xn_reversa.getAmostras_Reversas());
 			stop = std::chrono::high_resolution_clock::now();
-			Xk_FFT.mostrarTransformadaFourier(Xk_FFT.getTransformada());
+			//Xk_FFT.mostrarTransformadaFourier(Xk_FFT.getTransformada());
 			break;
 
 		default:

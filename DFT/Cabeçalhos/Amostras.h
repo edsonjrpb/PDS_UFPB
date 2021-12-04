@@ -10,7 +10,7 @@ class Amostras {
 private:
 	
 	/*Vetor de Amostras*/
-	std::vector<float> xn;
+	std::vector<double> xn;
 		
 protected:
 
@@ -18,32 +18,32 @@ public:
 	
 	/*CONSTRUTOR*/
 	Amostras();
-	Amostras(std::vector<float> xn);
+	Amostras(std::vector<double> xn);
 
 
 	/*DESTRUTOR*/
 	~Amostras();
 
 	/*Método para Inicializar o vetor Amostras*/
-	void setAmostras(std::vector<float> xn);
+	void setAmostras(std::vector<double> xn);
 	
 	/*Método para Inicializar o vetor Amostras*/
-	std::vector<float> getAmostras();
+	std::vector<double> getAmostras();
 
 	/*Método para obteção de amostras do sinal de forma digitada*/
-	std::vector<float> ObterAmostras_EntradaDigitada();
+	std::vector<double> ObterAmostras_EntradaDigitada();
 
 	/*Método para obteção de amostras do sinal de forma randômica*/
-	std::vector<float> ObterAmostras_EntradaRandomica();
+	std::vector<double> ObterAmostras_EntradaRandomica();
 
 	/*Método para obteção de amostras do sinal de arquivo externo*/
-	std::vector<float> ObterAmostras_EntradaArquivoExterno();
+	std::vector<double> ObterAmostras_EntradaArquivoExterno();
 
 	/*Imprimir ou Gravar Amostras*/
-	void GravarAmostrasDiscretas_ArquivoExterno(std::vector<float> xn);
+	void GravarAmostrasDiscretas_ArquivoExterno(std::vector<double> xn);
 	
 	/*Método que imprime na tela sequência de amostra enviada como parâmetro*/
-	void MostrarAmostras(std::vector<float> xn);
+	void MostrarAmostras(std::vector<double> xn);
 
 	/*Cria o efeito de preenchimento do vetor com zero "Zero-Padding" até uma pontência de 2* - usado para FFT*/
 	void ZeroPadding();

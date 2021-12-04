@@ -1,4 +1,4 @@
-#include  <Amostras.h>
+#include 
 
 /*CONSTRUTOR*/
 Amostras::Amostras()
@@ -6,7 +6,7 @@ Amostras::Amostras()
 	this->xn.clear();
 }
 
-Amostras::Amostras(std::vector<double> xn)
+Amostras::Amostras(std::vector<float> xn)
 {
 	this->xn.clear();
 	this->xn = xn;
@@ -21,24 +21,24 @@ Amostras::~Amostras()
 /*MÉTODOS*/
 
 /*Método para inicializar o vetor Amostras*/
-void Amostras::setAmostras(std::vector<double> xn)
+void Amostras::setAmostras(std::vector<float> xn)
 {
 	this->xn.clear();
 	this->xn = xn;
 }
 
 /*Método para obter o vetor Amostras*/
-std::vector<double> Amostras::getAmostras() 
+std::vector<float> Amostras::getAmostras() 
 {
 	return this->xn;
 }
 
 /*Método para obteção de amostras do sinal de forma digitada*/
-std::vector<double> Amostras::ObterAmostras_EntradaDigitada()
+std::vector<float> Amostras::ObterAmostras_EntradaDigitada()
 {
 	setlocale(LC_ALL, "portuguese");
 	float amostra{ 0.0f };
-	std::vector<double> xn;
+	std::vector<float> xn;
 	
 	do {
 		std::cout << "\nEntre com o valor da amostra (entre 0 para finalizar): ";
@@ -52,10 +52,10 @@ std::vector<double> Amostras::ObterAmostras_EntradaDigitada()
 }
 
 /*Método para obteção de amostras do sinal de forma randômica*/
-std::vector<double> Amostras::ObterAmostras_EntradaRandomica()
+std::vector<float> Amostras::ObterAmostras_EntradaRandomica()
 {
 	int amostras{ 0 };
-	std::vector<double> xn;
+	std::vector<float> xn;
 	
 	srand((unsigned int)time(0));
 	
@@ -73,12 +73,12 @@ std::vector<double> Amostras::ObterAmostras_EntradaRandomica()
 }
 
 /*Método para obteção de amostras do sinal de arquivo externo*/
-std::vector<double> Amostras::ObterAmostras_EntradaArquivoExterno()
+std::vector<float> Amostras::ObterAmostras_EntradaArquivoExterno()
 {
 	std::string endereco{ NULL };
 	std::string entrada{ NULL };
 	std::vector<std::string> amostras_string;
-	std::vector<double> xn;
+	std::vector<float> xn;
 	
 	std::cout << "\nDigite o endereço do arquivo onde se encontram as amostras: ";
 	std::cin >> endereco;
@@ -105,7 +105,7 @@ std::vector<double> Amostras::ObterAmostras_EntradaArquivoExterno()
 }
 
 /*Método para gravação de amostras em arquivo externo*/
-void Amostras::GravarAmostrasDiscretas_ArquivoExterno(std::vector<double> xn)
+void Amostras::GravarAmostrasDiscretas_ArquivoExterno(std::vector<float> xn)
 {
 	std::ofstream arquivo;
 	int i{ 0 };
@@ -116,7 +116,7 @@ void Amostras::GravarAmostrasDiscretas_ArquivoExterno(std::vector<double> xn)
 	arquivo.open(nome_arquivo + ".txt");
 	
 
-	for (std::vector<double>::iterator it = xn.begin(); it != xn.end(); ++it, ++i)
+	for (std::vector<float>::iterator it = xn.begin(); it != xn.end(); ++it, ++i)
 	{
 		arquivo.open("Amostras.txt", std::ios::app);
 		arquivo << "\nxn[" << i << "]: " << *it;
@@ -131,12 +131,12 @@ void Amostras::GravarAmostrasDiscretas_ArquivoExterno(std::vector<double> xn)
 }
 
 /*Método que imprime na tela sequência de amostra enviada como parâmetro*/
-void Amostras::MostrarAmostras(std::vector<double> xn)
+void Amostras::MostrarAmostras(std::vector<float> xn)
 {
 	unsigned int i{ 0 };
 	
 	std::cout << "\n\n\n*************** AMOSTRAS DO SINAL ****************" << std::endl;
-	for(std::vector<double>::iterator it = xn.begin(); it != xn.end(); ++it, ++i)
+	for(std::vector<float>::iterator it = xn.begin(); it != xn.end(); ++it, ++i)
 	{
 		std::cout << "\nxn[" << i << "]: " << *it;
 	}
@@ -160,7 +160,7 @@ void Amostras::ZeroPadding()
 	}
 	else
 	{
-		std::vector<double> xn{ this->getAmostras() };
+		std::vector<float> xn{ this->getAmostras() };
 		int proximaPotencia{ (int)ceil(log2(xn.size())) };
 		
 		int deficit{ (int)pow(2,proximaPotencia) - (int)xn.size() };

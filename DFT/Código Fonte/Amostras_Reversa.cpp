@@ -14,25 +14,25 @@ Amostras_Reversa::~Amostras_Reversa() {}
 /*MÉTODOS*/
 
 /*Método para Inicializar o valor das amostras*/
-void Amostras_Reversa::setAmostras_Reversas(std::vector<double> xn_reversa)
+void Amostras_Reversa::setAmostras_Reversas(std::vector<float> xn_reversa)
 {
 	this->xn_reversa.clear();
 	this->xn_reversa = xn_reversa;
 }
 
 /*Método para obter o valor das amostras*/
-std::vector<double> Amostras_Reversa::getAmostras_Reversas()
+std::vector<float> Amostras_Reversa::getAmostras_Reversas()
 {
 	return this->xn_reversa;
 }
 
 /*Método de Implementação do Bit Reversal Algorithm*/
-std::vector<double> Amostras_Reversa::Reverter_Amostras(Amostras xn)
+std::vector<float> Amostras_Reversa::Reverter_Amostras(Amostras xn)
 {
 	if (!xn.isPotenciaDeDois()) std::cout << "reversão incompactível";
 	
 	std::vector<int> index_reversa;
-	std::vector<double> amostras_reversas;
+	std::vector<float> amostras_reversas;
 	int N{ (int)pow(2,log2(xn.getAmostras().size())) };
 	int bits{ (int)log2(xn.getAmostras().size()) };
 		
@@ -62,12 +62,12 @@ std::vector<double> Amostras_Reversa::Reverter_Amostras(Amostras xn)
 }
 
 /*Método que imprime na tela sequência de amostra reversa enviada como parâmetro*/
-void Amostras_Reversa::MostrarAmostrasReversas(std::vector<double> xn_reversa)
+void Amostras_Reversa::MostrarAmostrasReversas(std::vector<float> xn_reversa)
 {
 	unsigned int i{ 0 };
 
 	std::cout << "\n\n\n************ AMOSTRAS DO SINAL REVERTIDOS *************" << std::endl;
-	for (std::vector<double>::iterator it = xn_reversa.begin(); it != xn_reversa.end(); ++it, ++i)
+	for (std::vector<float>::iterator it = xn_reversa.begin(); it != xn_reversa.end(); ++it, ++i)
 	{
 		std::cout << "\nxn[" << i << "]: " << *it;
 	}
